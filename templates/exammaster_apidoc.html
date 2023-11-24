@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exam Master API Document</title>
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+    </style>
+  </head>
+  <body> 
+
+  <main class="container">
+    <div class="p-4 p-md-2 mb-4 rounded text-bg-dark">
+      <div class="col-md-12 px-0">
+        <h1 class="display-4 fst-italic">Exam Master API Documentation</h1>
+        <p class="lead my-3">REST APIs with CRUD functionalities</p>
+      </div>
+    </div>
+
+    <!-- Privilege API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Privileges</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/privilege/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"privileges":"xxx","rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Privileges</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/privilege</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"privileges":"xxx","rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"},</p>
+            <p class="card-text mb-auto">{"id":n,"privileges":"xxx","rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Privileges</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/privilege</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"privileges":"xxx"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Privileges</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/privilege/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"privileges":"xxx"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Privileges</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/privilege/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Role API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Roles</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/role/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"role":"xxx","rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Roles</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/role</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"role":"xxx","rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"},</p>
+            <p class="card-text mb-auto">{"id":n,"role":"xxx","rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Roles</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/role</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"role":"xxx"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Roles</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/role/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"role":"xxx"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Roles</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/role/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Role Privilege API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Role Privileges</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/roleprivilege/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"roleid":n,"privilegeid":n,rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Role Privileges</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/roleprivilege</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"roleid":n,"privilegeid":n,"rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"},</p>
+            <p class="card-text mb-auto">{"id":n,"roleid":n,"privilegeid":n,"rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Role Privileges</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/roleprivilege</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"roleid":n,"privilegeid":n}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Role Privileges</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/roleprivilege/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"roleid":n,"privilegeid":n}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Role Privileges</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/roleprivilege/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Users</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/user/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"useraccount":xxx,"username":xxx,"passcode":xxx,"roleid":n,"apikey":xxx,rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Users</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/user</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"useraccount":xxx,"username":xxx,"passcode":xxx,"roleid":n,"apikey":xxx,"rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"},</p>
+            <p class="card-text mb-auto">{"id":n,"useraccount":xxx,"username":xxx,"passcode":xxx,"roleid":n,"apikey":xxx,"rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Users</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/user</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"useraccount":xxx,"username":xxx,"passcode":xxx,"roleid":n,"apikey":xxx}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Users</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/user/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"useraccount":xxx,"username":xxx,"passcode":xxx,"roleid":n,"apikey":xxx}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Users</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/user/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authenticate API-->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Authenticate</strong>
+            <h3 class="mb-0">Authenticate User Account</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/authenticate</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"useraccount":xxx,"passcode":xxx}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Authenticate</strong>
+            <h3 class="mb-0">Change User Account Password</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/authenticate</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"useraccount":xxx,"passcode":xxx}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Authenticate</strong>
+            <h3 class="mb-0">Get API Session Token</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/token</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"useraccount":xxx,"passcode":xxx,"apikey":xxx}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Authenticate</strong>
+            <h3 class="mb-0">Get API Refresh Token</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/token</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exam API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exams</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/exam/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"examname":xxx,"no_of_questions":n,"duration":n,"totalscore":n,"passingscore":n,rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exams</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/exam</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"examname":xxx,"no_of_questions":n,"duration":n,"totalscore":n,"passingscore":n,rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+            <p class="card-text mb-auto">{"id":n,"examname":xxx,"no_of_questions":n,"duration":n,"totalscore":n,"passingscore":n,rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exams</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/exam</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"examname":xxx,"no_of_questions":n,"duration":n,"totalscore":n,"passingscore":n}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exams</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/exam/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"examname":xxx,"no_of_questions":n,"duration":n,"totalscore":n,"passingscore":n}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exams</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/exam/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exam Questions API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exam Questions</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/examquesion/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"examid":n,"question":xxx,"answer_type":x,"answer1":xxx,"answer2":xxx,"answer3":xxx,"answer4":xxx,"marks":n,"correct_answer":xxx,"rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exam Questions</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/examquestion</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"examid":n,"question":xxx,"answer_type":x,"answer1":xxx,"answer2":xxx,"answer3":xxx,"answer4":xxx,"marks":n,"correct_answer":xxx,"rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+            <p class="card-text mb-auto">{"id":n,"examid":n,"question":xxx,"answer_type":x,"answer1":xxx,"answer2":xxx,"answer3":xxx,"answer4":xxx,"marks":n,"correct_answer":xxx,"rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exam Questions</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/examquestion</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"examid":n,"question":xxx,"answer_type":x,"answer1":xxx,"answer2":xxx,"answer3":xxx,"answer4":xxx,"marks":n,"correct_answer":xxx}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exam Questions</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/examquestion/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"examid":n,"question":xxx,"answer_type":x,"answer1":xxx,"answer2":xxx,"answer3":xxx,"answer4":xxx,"marks":n,"correct_answer":xxx}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Exam Questions</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/examquestion/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Students</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/student/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"studentname":xxx,"userid":n,"lastlogin":"YYYY-MM-DDTHH:MM:SS",rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Students</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/student</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"studentname":xxx,"userid":n,"lastlogin":"YYYY-MM-DDTHH:MM:SS",rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+            <p class="card-text mb-auto">{"id":n,"studentname":xxx,"userid":n,"lastlogin":"YYYY-MM-DDTHH:MM:SS",rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Students</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/student</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"studentname":xxx,"userid":n,"lastlogin":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Students</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/student/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"studentname":xxx,"userid":n,"lastlogin":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Students</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/student/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Exams API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Exams</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentexam/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"studentid":n,"examid":n,"attemptno":n,"examscore":n,"starttime":"YYYY-MM-DD HH:MM:SS","endtime":"YYYY-MM-DD HH:MM:SS",rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Exams</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentexam</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"studentid":n,"examid":n,"attemptno":n,"examscore":n,"starttime":"YYYY-MM-DD HH:MM:SS","endtime":"YYYY-MM-DD HH:MM:SS",rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+            <p class="card-text mb-auto">{"id":n,"studentid":n,"examid":n,"attemptno":n,"examscore":n,"starttime":"YYYY-MM-DD HH:MM:SS","endtime":"YYYY-MM-DD HH:MM:SS",rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Exams</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentexam</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"studentid":n,"examid":n,"attemptno":n,"examscore":n,"starttime":"YYYY-MM-DD HH:MM:SS","endtime":"YYYY-MM-DD HH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Exams</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentexam/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"studentid":n,"examid":n,"attemptno":n,"examscore":n,"starttime":"YYYY-MM-DD HH:MM:SS","endtime":"YYYY-MM-DD HH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Exams</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentexam/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Answers API -->
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Answers</strong>
+            <h3 class="mb-0">Read Record</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentanswer/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">{"id":n,"studentexamid":n,"examquestionid":n,"question_response":xxx,"response_result":x,rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Answers</strong>
+            <h3 class="mb-0">Read All Records</h3>
+            <blockquote class="blockquote">
+              <p>GET</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentanswer</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Output:</div>
+            <p class="card-text mb-auto">[{"id":n,"studentexamid":n,"examquestionid":n,"question_response":xxx,"response_result":x,rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}</p>
+            <p class="card-text mb-auto">{"id":n,"studentexamid":n,"examquestionid":n,"question_response":xxx,"response_result":x,rec_insertedon":"YYYY-MM-DDTHH:MM:SS","rec_lastupdatedon":"YYYY-MM-DDTHH:MM:SS"}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Answers</strong>
+            <h3 class="mb-0">Create Record</h3>
+            <blockquote class="blockquote">
+              <p>POST</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentanswer</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"studentexamid":n,"examquestionid":n,"question_response":xxx,"response_result":x}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Answers</strong>
+            <h3 class="mb-0">Update Record</h3>
+            <blockquote class="blockquote">
+              <p>PUT</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentanswer/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+            <div class="mb-1 text-body-secondary">Input:</div>
+            <p class="card-text mb-auto">{"studentexamid":n,"examquestionid":n,"question_response":xxx,"response_result":x}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-1">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Student Answers</strong>
+            <h3 class="mb-0">Delete Record</h3>
+            <blockquote class="blockquote">
+              <p>DELETE</p>
+            </blockquote>
+            <p class="card-text mb-auto">http://localhost:8080/studentanswer/id</p>
+            <p class="card-text mb-auto">[Header: Authorization: Bearer APISESSIONKEY]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        <div class="p-4 p-md-2 mb-4 rounded text-bg-dark">
+          <div class="col-md-12 px-0">
+            <p class="lead my-3">(c) 2023 JRC CloudTech</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+  </body>
+</html>
